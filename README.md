@@ -3,7 +3,7 @@
 Tools used:
 Javafx for the user interface
 Gradle for dependecies
-Postgresql for data persistence
+Postgresql for data persistence (there is also an image of a diagram of the database)
 
 Gamification idea: Workout app where you can earn tokens and badges for completing quests from the other users
 
