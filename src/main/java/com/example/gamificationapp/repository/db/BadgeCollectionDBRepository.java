@@ -49,15 +49,6 @@ public class BadgeCollectionDBRepository extends AbstractDBRepository<Pair<Strin
         statement.setString(2,entity.getId().second);
     }
 
-    @Override
-    protected PreparedStatement getUpdateStatement(Connection connection) throws SQLException {
-        return null;
-    }
-
-    @Override
-    protected void updateEntity(PreparedStatement statement, BadgeCollection entity) throws SQLException {
-
-    }
 
     @Override
     public List<Badge> findUserBadges(String id_user) {

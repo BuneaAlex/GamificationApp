@@ -3,7 +3,7 @@ package com.example.gamificationapp.repository.interfaces;
 import com.example.gamificationapp.domain.Entity;
 
 /**
- * CREATE, READ, UPDATE operations repository interface
+ * CREATE, READ operations repository interface
  *
  * @param <ID> - type E must have an attribute of type ID
  * @param <E>  -  type of entities saved in repository
@@ -30,9 +30,4 @@ public interface IRepository<ID, E extends Entity<ID>> {
      */
     void save(E entity);
 
-    /**
-     * @param entity entity must not be null
-     * updates the element in the repo with the same ID, giving it entity's values for its attributes
-     */
-    void update(E entity);
 }

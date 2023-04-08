@@ -3,10 +3,20 @@ package com.example.gamificationapp.domain;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * DTO used for the user's profile
+ */
+
 public class ProfileDTO {
 
     private Quest quest;
     private LocalDateTime dateOfCompletion;
+
+    /**
+     * Constructor
+     * @param quest - quest completed by user
+     * @param dateOfCompletion - when the quest is completed
+     */
 
     public ProfileDTO(Quest quest, LocalDateTime dateOfCompletion) {
         this.quest = quest;
@@ -15,10 +25,6 @@ public class ProfileDTO {
 
     public Quest getQuest() {
         return quest;
-    }
-
-    public Category getCategory(){
-        return quest.getExercise().getCategory();
     }
 
     public LocalDateTime getDateOfCompletion() {

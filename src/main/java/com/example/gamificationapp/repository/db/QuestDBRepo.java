@@ -74,13 +74,4 @@ public class QuestDBRepo extends AbstractDBRepository<Integer, Quest> implements
         statement.setInt(5,entity.getTokens());
     }
 
-    @Override
-    protected PreparedStatement getUpdateStatement(Connection connection) throws SQLException {
-        return null;
-    }
-
-    @Override
-    protected void updateEntity(PreparedStatement statement, Quest entity) throws SQLException {
-
-    }
 }

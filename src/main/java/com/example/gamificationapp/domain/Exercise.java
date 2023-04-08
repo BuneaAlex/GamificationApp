@@ -2,11 +2,21 @@ package com.example.gamificationapp.domain;
 
 import java.util.Objects;
 
+/**
+ * A serializable entity which has the ID of type Integer
+ */
 public class Exercise extends Entity<Integer>{
 
     private Category category;
     private Type type;
     private Measurement measurement;
+
+    /**
+     * Constructor
+     * @param category - category of the exercise
+     * @param type - type of exercise
+     * @param measurement - how is the performance measured
+     */
 
     public Exercise(Category category, Type type, Measurement measurement) {
         this.category = category;

@@ -1,6 +1,5 @@
 package com.example.gamificationapp.controller;
 
-import com.example.gamificationapp.HelloApplication;
 import com.example.gamificationapp.domain.*;
 import com.example.gamificationapp.utils.SimpleAlertBuilder;
 import javafx.beans.binding.Bindings;
@@ -9,12 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The main controller that has access to all the features
+ */
 public class MainController extends AbstractController implements Initializable {
 
     public TableView<UserLeaderboardDTO> leaderBoardTableView;
@@ -81,6 +79,9 @@ public class MainController extends AbstractController implements Initializable 
         initQuestToCompleteTable();
     }
 
+    /**
+     * Initialization of the comboboxes
+     */
     private void initComboBoxModel()
     {
         loadProofButton.setDisable(true);
@@ -90,6 +91,9 @@ public class MainController extends AbstractController implements Initializable 
         exerciseComboBox.setItems(exercisesList);
     }
 
+    /**
+     * Initialization of the leaderboard table
+     */
     private void initLeaderboardTable()
     {
         rankLeaderboardColumn.setCellValueFactory(cellData ->
@@ -97,9 +101,20 @@ public class MainController extends AbstractController implements Initializable 
         nameLeaderboardColumn.setCellValueFactory(cellData ->  new SimpleStringProperty(cellData.getValue().getUser().getId()));
         tokensLeaderboardColumn.setCellValueFactory(cellData ->  new SimpleStringProperty(String.valueOf(cellData.getValue().getTokens())));
         leaderBoardTableView.setItems(leaderboardList);
+        loadLeaderboard();
+    }
+
+    /**
+     * Loads the leaderboard
+     */
+    private void loadLeaderboard()
+    {
         leaderboardList.setAll(service.getLeaderboard());
     }
 
+    /**
+     * Initialization of the available quests to complete by user
+     */
     private void initQuestToCompleteTable()
     {
         categoryColumn.setCellValueFactory(cellData ->
@@ -112,6 +127,9 @@ public class MainController extends AbstractController implements Initializable 
         loadQuests();
     }
 
+    /**
+     * Sets the quests not completed by user to the questsList
+     */
     private void loadQuests()
     {
         questsList.setAll(service.getQuestToCompleteByUser(user.getId()));
@@ -121,15 +139,28 @@ public class MainController extends AbstractController implements Initializable 
     private User user;
     private Quest questSelected = null;
 
+    /**
+     * Constructor
+     * @param user the user that has the account
+     */
     public MainController(User user) {
         this.user = user;
     }
 
 
+    /**
+     * Logout
+     * @param actionEvent the action that causes the window to open
+     * @throws IOException if an error of type IO occurs
+     */
     public void logoutAction(ActionEvent actionEvent) throws IOException {
         openLoginWindow(actionEvent);
     }
 
+    /**
+     * Select a category for exercises and set the exercise types combobox based on that category
+     * @param actionEvent action of the event
+     */
     public void selectCategoryAction(ActionEvent actionEvent) {
         exercisesAvailable = service.filterExercisesByCategory(categoryComboBox.getSelectionModel().getSelectedItem());
         List<Type> exerciseTypes = new ArrayList<>();
@@ -143,6 +174,10 @@ public class MainController extends AbstractController implements Initializable 
 
     }
 
+    /**
+     * Select a type of exercise and set the measurement label based on that type
+     * @param actionEvent action of the event
+     */
     public void selectExerciseTypeAction(ActionEvent actionEvent) {
         Type exerciseType = exerciseComboBox.getSelectionModel().getSelectedItem();
         for(Exercise e : exercisesAvailable)
@@ -156,6 +191,12 @@ public class MainController extends AbstractController implements Initializable 
         measurementLabel.setText(currentExercise.getMeasurement().toString());
     }
 
+    /**
+     * Function that calculates the tokens of a quest based on exercise and measurement units
+     * @param category category
+     * @param exercise exercise
+     * @return the number of tokens that the quest is worth
+     */
     private int calculateTokens(Category category,Type exercise)
     {
         int baseTokens = 50;
@@ -210,7 +251,12 @@ public class MainController extends AbstractController implements Initializable 
         }
     }
 
-
+    /**
+     * Creates a quest and saves it, if it is worth more than 0 tokens and less than the amount of tokens that the author has
+     * Shows error message if the quest is worth 0 tokens
+     * Shows error message if the quest is worth more tokens than the user can afford
+     * @param actionEvent action of the event
+     */
 
     public void addQuestAction(ActionEvent actionEvent) {
 
@@ -246,6 +292,11 @@ public class MainController extends AbstractController implements Initializable 
         }
     }
 
+    /**
+     * Visits the users from the leaderboard profiles
+     * @param actionEvent the action that causes the window to open
+     * @throws IOException if an error of type IO occurs
+     */
     public void seeUserProfile(ActionEvent actionEvent) throws IOException {
         int index = leaderBoardTableView.getSelectionModel().getSelectedIndex();
         if(index!=-1)
@@ -255,20 +306,37 @@ public class MainController extends AbstractController implements Initializable 
         }
     }
 
+    /**
+     * The user visits its own profile
+     * @param actionEvent the action that causes the window to open
+     * @throws IOException if an error of type IO occurs
+     */
     public void seeProfileAction(ActionEvent actionEvent) throws IOException {
         openProfileWindow(actionEvent,user,user);
     }
 
+    /**
+     * The user loads the proof that the quest is actually completed (functionality not implemented yet)
+     * @param actionEvent action of the event
+     */
     public void loadProofAction(ActionEvent actionEvent) {
         completeQuestButton.setDisable(false);
     }
 
+    /**
+     * The user completes the quest
+     * The user is informed that the quest is completed and if any badges have been earned in the process
+     * The controls are reset
+     * @param actionEvent action of the event
+     */
     public void completeQuestAction(ActionEvent actionEvent) {
 
         service.completeQuest(user,questSelected, LocalDateTime.now());
         loadQuests();
+        loadLeaderboard();
         loadProofButton.setDisable(true);
         completeQuestButton.setDisable(true);
+        descriptionQuestTextArea.setText("");
 
         SimpleAlertBuilder alert = new SimpleAlertBuilder(Alert.AlertType.INFORMATION, "Message", "Quest completed!");
         alert.show();
@@ -287,6 +355,10 @@ public class MainController extends AbstractController implements Initializable 
         }
     }
 
+    /**
+     * The user selects which quest he/she want to complete and a detailed description of the quest is loaded
+     * @param actionEvent action of the event
+     */
     public void selectQuestToCompleteAction(ActionEvent actionEvent) {
         loadProofButton.setDisable(false);
         int index = questTableView.getSelectionModel().getSelectedIndex();

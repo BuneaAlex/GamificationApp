@@ -117,22 +117,5 @@ public class UserDBRepo extends AbstractDBRepository<String, User> implements IU
 
     }
 
-    @Override
-    protected PreparedStatement getUpdateStatement(Connection connection) throws SQLException {
-
-        String query = "UPDATE users SET first_name=?,last_name=?,password=? WHERE id_user = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        return statement;
-    }
-
-    @Override
-    protected void updateEntity(PreparedStatement statement, User entity) throws SQLException {
-        statement.setString(1,entity.getFirstName());
-        statement.setString(2,entity.getLastName());
-        statement.setString(3,entity.getPassword());
-        statement.setString(4, entity.getId());
-
-    }
-
 
 }

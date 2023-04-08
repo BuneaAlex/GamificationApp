@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="BOTTOM_RIGHT" prefHeight="412.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gamificationapp.controller.ProfileController">
+<GridPane alignment="BOTTOM_RIGHT" prefHeight="412.0" prefWidth="720.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gamificationapp.controller.ProfileController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.60003662109375" minWidth="10.0" prefWidth="263.1999877929687" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="476.79999999999995" minWidth="10.0" prefWidth="476.0000122070312" />
@@ -36,7 +36,7 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
          <children>
-            <TextArea fx:id="descriptionTextArea" editable="false" prefHeight="65.0" prefWidth="244.0">
+            <TextArea fx:id="descriptionTextArea" editable="false" prefHeight="108.0" prefWidth="244.0">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
@@ -78,7 +78,7 @@
                   <TableColumn fx:id="categoryProfileColumn" prefWidth="108.0" text="Category" />
                   <TableColumn fx:id="authorProfileColumn" minWidth="4.0" prefWidth="74.4000244140625" text="Author" />
                   <TableColumn fx:id="tokensProfileColumn" prefWidth="100.79998779296875" text="Tokens" />
-                  <TableColumn fx:id="dateProfileColumn" prefWidth="126.40008544921875" text="Date of completion" />
+                  <TableColumn fx:id="dateProfileColumn" prefWidth="177.59991455078125" text="Date of completion" />
                </columns>
             </TableView>
          </children>

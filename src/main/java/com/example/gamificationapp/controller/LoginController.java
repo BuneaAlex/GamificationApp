@@ -13,6 +13,11 @@ public class LoginController extends AbstractController{
     public TextField usernameTextField;
     public PasswordField passwordTextField;
 
+    /**
+     * Login the user into account if username and password are correct, else show alert message
+     * @param actionEvent the action of the event
+     * @throws IOException if an error of type IO occurs
+     */
     public void loginAction(ActionEvent actionEvent) throws IOException {
         User user = service.findUserForLogin(usernameTextField.getText(),passwordTextField.getText());
         if(user != null)

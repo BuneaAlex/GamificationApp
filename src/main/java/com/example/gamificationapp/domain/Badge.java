@@ -2,9 +2,18 @@ package com.example.gamificationapp.domain;
 
 import java.util.Objects;
 
+/**
+ * A serializable entity which has the ID of type String
+ */
+
 public class Badge extends Entity<String>{
 
     private String image;
+
+    /**
+     * Constructor
+     * @param image - image name
+     */
 
     public Badge(String image) {
         this.image = image;

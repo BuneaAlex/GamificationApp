@@ -7,6 +7,13 @@ public class CategoryBadge extends Badge{
     private Exercise exercise;
     private int units;
 
+    /**
+     * Constructor
+     * @param image - image name
+     * @param exercise - exercise
+     * @param units - value that measures how difficult is the exercise
+     */
+
     public CategoryBadge(String image, Exercise exercise, int units) {
         super(image);
         this.exercise = exercise;

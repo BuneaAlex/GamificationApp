@@ -76,16 +76,6 @@ public class ExerciseDBRepo extends AbstractDBRepository<Integer, Exercise> impl
     }
 
     @Override
-    protected PreparedStatement getUpdateStatement(Connection connection) throws SQLException {
-        return null;
-    }
-
-    @Override
-    protected void updateEntity(PreparedStatement statement, Exercise entity) throws SQLException {
-
-    }
-
-    @Override
     public List<Exercise> exercisesFilterByCategory(Category category) {
         String query = "select * from exercises where ex_category = ?";
         List<Exercise> exercises = new ArrayList<>();

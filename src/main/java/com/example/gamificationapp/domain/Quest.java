@@ -2,6 +2,9 @@ package com.example.gamificationapp.domain;
 
 import java.util.Objects;
 
+/**
+ * A serializable entity which has the ID of type Integer
+ */
 public class Quest extends Entity<Integer>{
 
     private Exercise exercise;
@@ -10,6 +13,14 @@ public class Quest extends Entity<Integer>{
     private int measurementUnits;
     private int tokens;
 
+    /**
+     * Constructor
+     * @param exercise - exercise supposed to do to complete quest
+     * @param description - quest description
+     * @param author - the author of the quest
+     * @param measurementUnits - measurement for difficulty of the exercise
+     * @param tokens - reward after completing quest
+     */
     public Quest(Exercise exercise, String description, String author, int measurementUnits, int tokens) {
         this.exercise = exercise;
         this.description = description;

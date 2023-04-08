@@ -47,16 +47,6 @@ public class CompletedQuestsDBRepo extends AbstractDBRepository<Pair<String,Inte
     }
 
     @Override
-    protected PreparedStatement getUpdateStatement(Connection connection) throws SQLException {
-        return null;
-    }
-
-    @Override
-    protected void updateEntity(PreparedStatement statement, CompletedQuests entity) throws SQLException {
-
-    }
-
-    @Override
     public List<ProfileDTO> getQuestsCompletedByUser(String id_user) {
         String query = "select * from quests inner join completed_quests cq on quests.id_quest = cq.id_quest where id_user=?";
         List<ProfileDTO> questList = new ArrayList<>();

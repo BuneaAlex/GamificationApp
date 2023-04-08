@@ -1,0 +1,90 @@
+
+
+.root
+{
+    -fx-background-image: url('../img/whitebackimg.jpg');
+    -fx-background-size: cover;
+}
+
+.button
+{
+    -fx-background-color:
+            #090a0c,
+            linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+            linear-gradient(#20262b, #191d22),
+            radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+}
+
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {
+    -fx-background-color: derive;
+    -fx-stroke: transparent;
+    -fx-size:30;
+    -fx-alignment: CENTER ;
+    -fx-text-alignment: center;
+
+}
+.table-row-cell:filled:hover {
+
+    -fx-size:30;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+
+
+}
+.table-view:row-selection {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-fixed-cell-size: 30;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+
+}
+
+.table-view .table-column{
+    -fx-text-alignment: center;
+    -fx-alignment: CENTER
+
+}
+
+.text-field {
+    -fx-background-color:
+            #FFFFFF,
+            #FFFFFF;
+    -fx-background-insets: 0, 2;
+    -fx-border-radius: 10 0 10 0;
+    -fx-background-radius: 10 0 10 0;
+}
+
+.text-field:focused {
+    -fx-background-color:
+            #0093EF,
+            #FFFFFF;
+}
+
+.text-field:hover {
+    -fx-background-color:
+            #909090,
+            #FFFFFF;
+}
+
+.text-field:focused:hover {
+    -fx-background-color:
+            #0093EF,
+            #FFFFFF;
+}
+
+.label
+{
+    -fx-font-family: "Arial Black";
+    -fx-fill: #818181;
+    -fx-effect: innershadow( three-pass-box , rgba(0, 0, 0, 0.5) , 3, 0.0 , 0 , 1 );
+}
