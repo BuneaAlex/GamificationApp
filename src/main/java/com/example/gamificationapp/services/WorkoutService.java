@@ -200,11 +200,11 @@ public class WorkoutService {
      */
     public int getUsersTokens(String id_user)
     {
-        List<Quest> quests = getQuestToCompleteByUser(id_user);
+        List<ProfileDTO> quests = getQuestsCompletedByUser(id_user);
         int sum = 0;
-        for(Quest q : quests)
+        for(ProfileDTO q : quests)
         {
-            sum+= q.getTokens();
+            sum+= q.getQuest().getTokens();
         }
         return sum;
     }
