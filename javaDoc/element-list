@@ -1,0 +1,8 @@
+module:com.example.gamificationapp
+com.example.gamificationapp
+com.example.gamificationapp.controller
+com.example.gamificationapp.domain
+com.example.gamificationapp.repository.db
+com.example.gamificationapp.repository.interfaces
+com.example.gamificationapp.services
+com.example.gamificationapp.utils

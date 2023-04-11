@@ -2,6 +2,7 @@ module com.example.gamificationapp {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires org.junit.jupiter.api;
 
     opens com.example.gamificationapp to javafx.fxml;
     opens com.example.gamificationapp.controller to javafx.fxml;
